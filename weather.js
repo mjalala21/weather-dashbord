@@ -19,13 +19,13 @@ let btn=document.getElementById("btn")
 
          let currentCity = "";
 
-        // 1. IMPLEMENT getWeather(city) - Fetch API + async/await
+       
 
      const div = document.createElement("div");
             div.classList.add("favorite-item");
        const search=document.getElementById("searchBtn")
     //    search.addEventListener("click", async ()=>{
-    //    const city=document.getElementById("cityInput").value
+    //    const entertab=document.getElementById("cityInput")
     
 
 
@@ -77,7 +77,7 @@ let btn=document.getElementById("btn")
             icon.src="weather_image/clouds.png";
         }
         else{
-            icon.innerHTML="<h3>no weather ICON</h3>"
+            icon.innerHTML="---"
         }
 
       
@@ -87,8 +87,8 @@ let btn=document.getElementById("btn")
     catch(error){
        
         document.getElementById("errormsg").innerHTML=
-        error.message;
-        // "Invalid place entered"
+        
+        "Invalid place entered"
     }
      finally {
         loader.style.display = "none";
@@ -106,7 +106,7 @@ let btn=document.getElementById("btn")
          const url=
 `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;     
 
-        const response=await fetch(url)    // TODO: Complete this function
+        const response=await fetch(url)    
          const data=await response.json();
       
            if (!response.ok) {
@@ -215,8 +215,13 @@ function loadFavorites() {
 
     btn.addEventListener("click", () => {
         removeFavorite(city);
-    });
 
+    });
+     p.addEventListener("click", ()=>{
+        inputBox.value=city 
+       searchWeather(city) 
+       
+     })
 
 
    
@@ -239,7 +244,7 @@ function removeFavorite(cityToRemove) {
 }
 loadFavorites();
 
-// 5. IMPLEMENT debounceSearch()
+
   
        
 
@@ -250,8 +255,4 @@ loadFavorites();
 
 
 
-        // Export functions for button onclick (temporary)
-
-        // window.searchWeather = searchWeather;
-
-        // window.addFavorite = addFavorite
+     
